@@ -7,7 +7,7 @@ const app = express();
 const port = 3000 || process.env.PORT;
 
 // import libaries /data
-const {users, posts} = require('./data');
+const {schedules, users} = require('./data');
 let morgan = require ('morgan');
 let ejs = require ('ejs');
 const path = require ('path');
@@ -31,30 +31,32 @@ app.get ('/',(req,res)=>{
     res.json('Welcome to our schedule website')
 });
 
-app.get('/api/posts', (req, res) => {
-    res.json(posts);
+app.get('/schedules', (req, res) => {
+    res.json(schedules);
   });
 
-  app.get('/api/users', (req, res) => {
+  app.get('/users', (req, res) => {
     res.json(users);
   });
 
-// get specific post 
+// get specific schedules
 
-app.get('/api/posts/:id',(req,res)=>{
-    const index = req.params.id;
+app.get('/users/:user_id/schedules',(req,res)=>{
+    const index = req.params.user_id;
+ 
     console.log(typeof index);
+    console.log(index);
     // const specificPosts = posts.filter((x) => x.userId === parseInt(index));
     // console.log(specificPosts);
-    let specificPosts = [];
-    for (let i = 0; i < posts.length ; i++){
-        if (posts[i].userId === Number(index)){
-            specificPosts.push(posts[i]);
+    let specificSchedules = [];
+    for (let i = 0; i < schedules.length ; i++){
+        if (schedules[i].user_id === Number(index)){
+            specificSchedules.push(schedules[i]);
         }
 
     }
-    if (specificPosts.length > 0) {
-        res.send(specificPosts);
+    if (specificSchedules.length > 0) {
+        res.send(specificSchedules);
       } else {
         res.json({ msg: 'No posts with that id' });
       }
