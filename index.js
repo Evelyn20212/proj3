@@ -62,6 +62,29 @@ app.get('/users/:user_id/schedules',(req,res)=>{
       }
 })
 
+// post new user
+app.post ('/users',(req,res)=>{
+
+// destructure var for a user 
+const {firstname, lastname, email, password} = req.body
+
+// encrypt the pw with bcryptJS 
+// the password been salted 
+var salt = bcrypt.genSaltSync(10);
+var hash = bcrypt.hashSync(password, salt);
+// store hash in your password DB
+//create a new user
+const newUser={
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+    password: hash
+}
+//push  newUser to data array and send back newUser
+users.send(newUser)
+res.json(newUser)
+})
+
 
 //listen to exp app
 app.listen(3000);
