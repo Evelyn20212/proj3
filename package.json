@@ -1,8 +1,8 @@
 {
   "name": "proj3",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "pro3 first",
+  "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
@@ -19,5 +19,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evelyn20212/proj3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Evelyn20212/proj3/issues"
+  },
+  "homepage": "https://github.com/Evelyn20212/proj3#readme"
 }
