@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action=""  method ="post">
+   <%- include('../pages/partials/header.ejs') %> 
+   <h1>Add user</h1>
+
+   <!-- /users means url from the app.post, so the method is post -->
+    <form action="/users"  method ="POST">
        <div>
           <label for="firstname">First Name</label>
           <input id="firstname" type ="text" name ="firstname">
@@ -19,7 +23,7 @@
        </div>
        <br>
        <div>
-          <label for="email">Email</label>
+          <label for="email">Email:</label>
           <input id="email" type ="text" name ="email">
        </div>
        <br>
@@ -27,7 +31,7 @@
          <label for="password">Password:</label>
          <input id="password" type ="text" name ="password">
        </div>
-    
+       <br>
        <button type ="submit">Submit form</button>
     </form>
 </body>

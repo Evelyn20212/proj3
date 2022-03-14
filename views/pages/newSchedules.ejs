@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Schedule</h1>
+    <form action="/schedules"  method ="POST">
+        <div>
+           <label for="user_id">User_ID:</label>
+           <input id="user_id" type ="text" name ="user_id">
+        </div>
+        <br>
+        <div>
+           <label for="day">Day:</label>
+           <input id="day" type ="text" name ="day">
+        </div>
+        <br>
+        <div>
+           <label for="start_at">Start_at:</label>
+           <input id="start_at" type ="text" name ="start_at">
+        </div>
+        <br>
+        <div>
+          <label for="end_at">End_at:</label>
+          <input id="end_at" type ="text" name ="end_at">
+        </div>
+        <br>
+        <button type ="submit">Submit form</button>
+     </form>
+</body>
+</html>

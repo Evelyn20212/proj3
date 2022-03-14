@@ -9,6 +9,8 @@
 <body>
     <%- include('../pages/partials/header.ejs') %> 
     <h1>All Users</h1>
+
+
     <table>
         <thead>
             <tr>
@@ -19,19 +21,16 @@
             </tr>
         </thead>
         <tbody>
-            <% for( let index = 0; index < users.length; index++ ) { %>
+            <% for( let index = 0; index < array.length; index++ ) { %>
             <tr>
-                <td><%= users[index].firstname %></td>
-                <td><%= users[index].lastname %></td>
-                <td><%= users[index].email %></td>
-                <td><%= users[index].password %></td>
-                
-            </tr> 
+                <td><%= users[index].firstname %>First name</td>
+                <td><%= users[index].lastname %>Last name</td>
+                <td><%= users[index].email %>Email</td>
+                <td><%= users[index].password%>Password </td>
+             </tr> 
 
-            <% } %>
+             <% } %>
         </tbody>
     </table>
 </body>
 </html>
-
- <!-- l24 the tr has been given already so -->
