@@ -11,7 +11,8 @@ const {schedules, users} = require('./data');
 let morgan = require ('morgan');
 let ejs = require ('ejs');
 const path = require ('path');
-const res = require('express/lib/response');
+// const res = require('express/lib/response');
+const bcrypt = require ('bcryptjs')
 // const res = require('express/lib/response');
 
 //logging middleware
@@ -61,16 +62,11 @@ app.get ('/schedules', (req,res) =>{
       if (users[i].user_index  == index){
         specificUsers.push(users[i]);
         res.send(result)
-    }
-    
+    }    
      if (index >= users.length){
         res.status(400).json(`msg: User ${index} is not found`)}
       }
   })
-
-  
-
-
 
 // get specific schedules
 app.get('/users/:user_id/schedules',(req,res)=>{
@@ -96,6 +92,23 @@ app.get('/users/:user_id/schedules',(req,res)=>{
 }
 })
 
+app.post ('/schedules',(req,res)=>{
+// destructure var for a schedule 
+
+const {user_id, day, start_at, end_at} = req.body
+
+//create a new schedule
+const newSchedule={
+    user_id: user_id,
+    day: day,
+    start_at: start_at,
+    end_at: end_at
+}
+//push  newUser to data array and send back newUser
+schedules.push(newSchedule)
+res.json(newSchedule)
+})
+
 // // post new user
 app.post ('/users',(req,res)=>{
 
@@ -106,7 +119,7 @@ const {firstname, lastname, email, password} = req.body
 // the password been salted 
 var salt = bcrypt.genSaltSync(10);
 var hash = bcrypt.hashSync(password, salt);
-// store hash in your password DB
+// store hash in your password
 //create a new user
 const newUser={
     firstname: firstname,
@@ -115,7 +128,7 @@ const newUser={
     password: hash
 }
 //push  newUser to data array and send back newUser
-users.send(newUser)
+users.push(newUser)
 res.json(newUser)
 })
 
