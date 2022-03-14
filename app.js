@@ -111,7 +111,7 @@ res.redirect('/schedules')
   // })
 
     // validation to confirm number has been entered
-    
+    // for loop not nessessary ??
    let specificUsers =[]
    for (i = 0 ; i < users.length ; i++) {
       if (users[i].user_index  == index){
@@ -120,7 +120,7 @@ res.redirect('/schedules')
     }    
      if (index >= users.length){
         res.status(400).json(`msg: User ${index} is not found`)}
-      }
+      
   })
 
   // get specific schedules
