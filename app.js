@@ -57,15 +57,16 @@ app.get ('/schedules', (req,res) =>{
 
     // validation to confirm number has been entered
     
-   let specificUsers =[]
-   for (i = 0 ; i < users.length ; i++) {
-      if (users[i].user_index  == index){
-        specificUsers.push(users[i]);
-        res.send(result)
-    }    
+  //  let specificUsers =[]
+  //  for (i = 0 ; i < users.length ; i++) {
+  //     if (users[i].user_index  == index){
+  //       specificUsers.push(users[i]);
+  //       res.send(result)
+  //   }    
      if (index >= users.length){
         res.status(400).json(`msg: User ${index} is not found`)}
-      }
+    
+       res.send(result)
   })
 
 // get specific schedules
