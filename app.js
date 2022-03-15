@@ -31,16 +31,16 @@ app.set ('view engine','ejs');
 app.set('views','./views');
 
 //ROOT 
-// app.get('/', (req, res) => {
-//   res.render('pages/home', { users, title: 'welcome' });
-// });
+app.get('/', (req, res) => {
+  res.render('pages/home', { users, title: 'welcome' });
+});
 
 
 
 // if not work, $npm start 
-app.get ('/',(req,res)=>{
-    res.render('pages/home')
-});
+// app.get ('/',(req,res)=>{
+//     res.render('pages/home')
+// });
 
 //render users 
 app.get('/users',(req,res) =>{
@@ -120,7 +120,7 @@ res.redirect('/schedules')
     }    
      if (index >= users.length){
         res.status(400).json(`msg: User ${index} is not found`)}
-      
+     }
   })
 
   // get specific schedules
