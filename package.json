@@ -1,11 +1,15 @@
 {
   "name": "proj3",
   "version": "1.0.0",
-  "description": "pro3 first",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
+    "create_db":"sql -U postgres -f sql/create_db.sql"
+    "create_tables": "psql -U postgres -d learning -f sql/create_tables.sql",
+    "seed_tables": "psql -U postgres -d learning -f sql/seed_tables.sql",
+    "setup_db": "npm run create_db && npm run create_tables && npm run seed_tables",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
