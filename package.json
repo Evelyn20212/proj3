@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "create_db":"sql -U postgres -f sql/create_db.sql"
+    "create_db": "psql -U postgres -f sql/create_db.sql",
     "create_tables": "psql -U postgres -d learning -f sql/create_tables.sql",
     "seed_tables": "psql -U postgres -d learning -f sql/seed_tables.sql",
     "setup_db": "npm run create_db && npm run create_tables && npm run seed_tables",
@@ -19,6 +19,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
+    "path": "^0.12.7",
     "pg-promise": "^10.11.1"
   },
   "devDependencies": {

@@ -4,19 +4,18 @@ const express =require('express');
 const app = express();
 
 //create port var
-const port = 3000 || process.env.PORT;
+const port =process.env.PORT||3000;
 
 // import libaries /data
-const {schedules, users} = require('./data');
-let morgan = require ('morgan');
+// const {schedules, users} = require('./data');
+const morgan = require ('morgan');
 const path = require ('path');
 const bcrypt = require ('bcryptjs')
-const ejs = require ('ejs');
-
-// 
-const db = require('./database')
 
 
+// import route files
+ const homeRouter =require("./routes/home.js")
+ const usersRouter =require("./routes/users.js")
 
 //logging middleware
 app.use(morgan('dev'));
@@ -26,69 +25,18 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 
-// Static files
-app.use(express.static(path.join(__dirname, 'public')))
 // EJS CONFIG
 
 app.set ('view engine','ejs');
-app.set('views','./views');
+// app.set('views','./views');
+
+// Static files
+app.use(express.static(path.join(__dirname, 'public')))
 
 
-// get specific user
-app.get('/users/:user_id',(req,res)=>{
-  const index = req.params.user_id
-//psql command line 
-  db.any('SELECT * FROM users WHERE id =$1',[index])
-  
-// the params of the user_id is required 
-      const result = users[index] 
-      // console.log(result)         
-      // users[index] in the array equal to the result
-      // })
-
-    if (index >= users.length){
-              res.status(400).json(`msg: User ${index} is not found`)}
-           res.render('pages/user',{user})
-    })
-
-
-
-// get all users
-app.get('/users/:user_id',(req,res)=>{
-
-  //psql command line 
-    db.any('SELECT * FROM users')
-    .then((users)=>{
-      console.log(users)
-      res.render('pages/users', {users})
-    })
-    .catch((error)=>{
-      console.log(error)
-      res.redirect("error?message =" + error.message)
-    })
-
-
-// oneorNone 
-
-app.get('/users/:user_id',(req,res)=>{
-  const index = req.params.user_id
-
-  db.oneOrNone('SELECT * FROM users WHERE id =$1',[index])
-  .then(function(user){
-    console.log(user)
-    res.render('pages/user', {user:data})
-  })
-
-
-  .catch(function(error){
-    console.log(error)
-      res.render('pages/error',{
-        error,
-        title:"User"
-      })
-  })
-
-})
+//ROUTES
+app.use('/', homeRouter)
+app.use('/users', usersRouter)
 
 
 // errorpage
@@ -104,9 +52,9 @@ app.get('*', (req,res)=>{
 // });
 
 // if not work, $npm start 
-app.get ('/',(req,res)=>{
-    res.render('pages/home')
-})
+// app.get ('/',(req,res)=>{
+//     res.render('pages/home')
+// })
 
 //render users 
 // app.get('/users',(req,res) =>{
@@ -315,5 +263,5 @@ app.get ('/',(req,res)=>{
 // //listen to exp app
 // // port is listening to the function 
 app.listen(port, () => {
-  console.log(`Example app listening on http://localhost:${port}`)
+  console.log(`Example app listening on http://localhost:${port}`);
 })
