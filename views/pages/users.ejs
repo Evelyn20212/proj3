@@ -7,7 +7,7 @@
     <title><%= title %></title>
 </head>
 <body>
-    <%- incldue('../pages/partials/header.ejs') %> 
+    <%- include('../partials/header.ejs') %> 
     <h1>All Users</h1>
     <table>
         <thead>
@@ -23,8 +23,12 @@
             <tr>
                 <td><%= users[index].firstname %> </td>
                 <td><%= users[index].lastname %> </td>
-                <td><a href="users/<%=index%>"<%=<users[index].email%></a></td>
-                <td><%= users[index].password %> </td>
+                <td>
+                    <a href="users/<%= index %>">
+                    <%=<users[index].email%>
+                    </a>
+                </td>
+                <td><%= users[index].password %></td>
             </tr>
 
             <% } %>

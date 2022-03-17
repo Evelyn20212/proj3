@@ -14,7 +14,7 @@ const bcrypt = require ('bcryptjs')
 
 
 // import route files
- const homeRouter =require("./routes/home.js")
+ const homeRouter =require("./routes/home.js")   // imported file var
  const usersRouter =require("./routes/users.js")
 
 //logging middleware
@@ -35,14 +35,14 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 //ROUTES
-app.use('/', homeRouter)
+app.use('/', homeRouter)  // /url , homeRouter import var
 app.use('/users', usersRouter)
 
 
 // errorpage
-app.get('*', (req,res)=>{
-  res.render('pages/error',{title:'404', error :"404"})
-})
+// app.get('*', (req,res)=>{
+//   res.render('pages/error',{title:'404', error :"404"})
+// })
 
 
 
