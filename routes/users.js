@@ -23,7 +23,7 @@ router.get('/',(req,res)=>{
 
      // GET user form
 router.get('/add', (req,res)=>{
-    res.render('pages/newUser', {title : 'Add a new user'});   
+    res.render('pages/newUser', {title:'Add User'});   
 })
 
 // get a specific user

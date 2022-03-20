@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-</head>
-<body>
-    <%- include('../partials/header.ejs') %> 
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
     <h1>All Users</h1>
     <table>
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for( let index = 0; index < users.length; index++ ) { %>
-            <tr>
-                <td><%= users[index].firstname %> </td>
-                <td><%= users[index].lastname %> </td>
+      <thead>
+        <tr>
+          <th>First Name</th> 
+          <th>Last Name</th> 
+          <th>Email</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <% for( let index = 0; index < users.length; index++ ) { %>
+        <tr>
+          <td><%= users[index].firstname %></td>
+          <td><%= users[index].lastname %></td>
+          <td>
+              <a href="users/<%= index + 1%>">
+                <%= users[index].email %>
+            </a>
+        </td>
+          <td><%= users[index].password %></td>
+        </tr>
+        <% } %> -->
+         <!-- array.forEach(element =>console.log(element)) -->
+        <% users.forEach(element => { %>
+          <tr>
+            <td><%= element.id %></td>
+            <td><%= element.firstname %></td>
+            <td><%= element.lastname %></td>
+            <td><a href="users/<%= element.id%>">
+                <%= element.email %>
+                </a>
+            </td>
+          </tr>
+        <% }) %> 
+<!-- Instead of printing out each element, simlify the steps by const property in element -->
+        <!-- <% users.forEach(element => { %>
+          <tr>
+          <% for(const property in element) { %>
+              
                 <td>
-                    <a href="users/<%= index %>">
-                    <%=<users[index].email%>
-                    </a>
+                  <%= element[property] %>
                 </td>
-                <td><%= users[index].password %></td>
-            </tr>
+          <% } %>       
+                
+          </tr>
+        
 
-            <% } %>
-        </tbody>
+        <% }) %> -->
+
+    
+
+      </tbody>
     </table>
-</body>
+  </body>
 </html>

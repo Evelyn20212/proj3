@@ -8,17 +8,17 @@
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <h1>User: <%= schedules.user_id %> <%= schedules.day %></h1>
+    <h1>User: <%= schedule.username %> <%= schedule.day_of_the_week %></h1>
     <table>
       <thead>
         <tr>
-          <th>User_id</th>
+          <th>Email</th>
           <th>Password</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><%= schedules.user_id %></td>
+          <td><%= user.email %></td>
           <td><%= user.password %></td>
         </tr>
       </tbody>

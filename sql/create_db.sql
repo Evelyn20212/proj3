@@ -1,2 +1,5 @@
+-- DROP DATABASE IF EXISTS learning;
+-- CREATE DATABASE learning;
+
 DROP DATABASE IF EXISTS learning;
 CREATE DATABASE learning;

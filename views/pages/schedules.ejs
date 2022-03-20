@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <h1>All schedules</h1>
+    <table>
+      <thead>
+          <tr>
+              <th>username</th>
+              <th>day_of_the_week</th>
+              <th>start_at</th>
+              <th>end_at</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% for( let index = 0; index < schedules.length; index++ ) { %>
+          <tr>
+              <td><%= schedules[index].username %></td>
+              <td><%= schedules[index].day_of_the_week %></td>
+              <td><%= schedules[index].start_at %></td>
+              <td><%= schedules[index].end_at %></td>
+              
+          </tr> 
+          <% } %>
+      </tbody>
+  </table>
+</body>
+</html>

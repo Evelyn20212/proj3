@@ -8,14 +8,17 @@ const port =process.env.PORT||3000;
 
 // import libaries /data
 // const {schedules, users} = require('./data');
+
 const morgan = require ('morgan');
 const path = require ('path');
 const bcrypt = require ('bcryptjs')
 
 
 // import route files
+
  const homeRouter =require("./routes/home.js")   // imported file var
  const usersRouter =require("./routes/users.js")
+ const schedulesRouter= require('./routes/schedules.js')
 
 //logging middleware
 app.use(morgan('dev'));
@@ -37,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 //ROUTES
 app.use('/', homeRouter)  // /url , homeRouter import var
 app.use('/users', usersRouter)
+app.use('/schedules',schedulesRouter)
 
 
 // errorpage
